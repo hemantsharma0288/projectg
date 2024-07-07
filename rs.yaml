@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: ReplicaSet
+metadata:
+  name: hs-labs-nginx-rs
+  labels: 
+    app: hs-labs
+    tier: hs-labs-FE
+spec:
+  replicas: 3
+  #minReplicas:3
+  #maxReplicas:6
+  selector:
+    matchLabels:
+      tier: hs-labs-FE
+  template:
+    metadata:
+      labels:
+        tier: hs-labs-FE
+    spec:
+      containers:
+        - name: hs-labs-nginx-rs
+          image: nginx
